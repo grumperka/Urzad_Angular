@@ -1,0 +1,12 @@
+<p>lista-urzedow works!</p>
+<br>
+<ul class="list-group list-group-flush">
+    <li *ngFor="let urzad of listaUrzad_Woj" class="list-group-item">
+        <div>
+        {{ urzad.nazwa_urzedu }}<br>
+        <i>{{ urzad.nazwa_wojewodztwa}}</i>
+        </div>
+    </li>
+  </ul>
+  <br>
+  <app-add-urzad (onAddUrzedy)="addUrzedy($event)">  </app-add-urzad>

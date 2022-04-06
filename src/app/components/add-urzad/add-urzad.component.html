@@ -1,0 +1,17 @@
+<h2>Dodaj urzad</h2>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nazwa">Nazwa urzedu</label>
+      <input type="text" class="form-control" id="nazwa" [(ngModel)]="nazwa" [ngModelOptions]="{standalone: true}" aria-describedby="nazwa" placeholder="Podaj nazwe urzedu">
+    </div><br>
+    <div class="form-group">
+      <label for="wojewodztwo_id">Województwo</label>
+    <select class="form-select" id="wojewodztwo_id" [(ngModel)]="wojewodztwo_id" [ngModelOptions]="{standalone: true}" aria-label="Domyślna wartość">
+        <option *ngFor="let woj of listaWojewodztw" [value]="woj.id">{{ woj.nazwa }}</option>
+      </select>
+    </div>
+    <br>
+    {{ nazwa }}
+    {{ wojewodztwo_id }}
+    <button type="submit" class="btn btn-success">Dodaj</button>
+  </form>
