@@ -19,6 +19,9 @@ import { ListaPowodowRozwoduComponent } from './components/lista-powodow-rozwodu
 import { ListaUrzedowComponent } from './components/lista-urzedow/lista-urzedow.component';
 import { ListaWojewodztwComponent } from './components/lista-wojewodztw/lista-wojewodztw.component';
 import { AddUrzadComponent } from './components/add-urzad/add-urzad.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EditUrzadComponent } from './components/edit-urzad/edit-urzad.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +37,17 @@ import { AddUrzadComponent } from './components/add-urzad/add-urzad.component';
     ListaPowodowRozwoduComponent,
     ListaUrzedowComponent,
     ListaWojewodztwComponent,
-    AddUrzadComponent
+    AddUrzadComponent,
+    EditUrzadComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

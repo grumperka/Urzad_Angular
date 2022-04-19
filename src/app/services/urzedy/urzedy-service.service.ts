@@ -26,9 +26,24 @@ export class UrzedyServiceService {
     return this.http.get<Urzad_Woj[]>(this.apiUrl, { headers: header });
   }
 
+  getUrzad(id: number): Observable<Urzad_Woj> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Urzad_Woj>(this.apiUrl + '/' + id, { headers: header });
+  }
+
+
   addUrzedy(urzedy: Urzedy): Observable<Urzedy>{
     console.log("SERVICE");
     console.log(urzedy);
     return this.http.post<Urzedy>(this.apiUrl, urzedy, httpOptions);
+  }
+
+  deleteUrzedy(urzedy: Urzedy){
+    console.log("SERVICE");
+    console.log(urzedy);
+    return this.http.delete<number>(this.apiUrl+'/'+urzedy.id,httpOptions);
   }
 }

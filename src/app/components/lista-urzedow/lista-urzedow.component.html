@@ -1,9 +1,8 @@
-<p>lista-urzedow works!</p>
-<br>
+
 <ul class="list-group list-group-flush">
     <li *ngFor="let urzad of listaUrzad_Woj" class="list-group-item">
         <div>
-        {{ urzad.nazwa_urzedu }}<br>
+        {{ urzad.nazwa_urzedu }} <fa-icon [ngStyle]="{'color': 'green', 'float': 'right'}" [icon]="faPencilAlt" (click)="editUrzedy(urzad)"></fa-icon> <fa-icon [ngStyle]="{'color': 'red', 'float': 'right', 'margin-right': '50px'}" (click)='deleteUrzedy(urzad)' [icon]="faTimes"></fa-icon><br>
         <i>{{ urzad.nazwa_wojewodztwa}}</i>
         </div>
     </li>

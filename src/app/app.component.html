@@ -2,57 +2,6 @@
   <h1>Urzad.gov.pl</h1>
 </div>
 <div>
-<ul ngbNav #nav="ngbNav" class="nav-tabs">
-  <li ngbNavItem>
-    <a ngbNavLink>Wojewodztwa</a>
-    <ng-template ngbNavContent>
-      <div class="container">
-      Lista wojewodztw<br>
-      <app-lista-wojewodztw></app-lista-wojewodztw>
-      </div>
-    </ng-template>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink>Urzednicy</a>
-    <ng-template ngbNavContent>
-      <div class="container">
-        Lista powodow rozwodu <br>
-        <app-lista-powodow-rozwodu></app-lista-powodow-rozwodu>
-        </div>
-    </ng-template>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink>Urzedy</a>
-    <ng-template ngbNavContent>
-      <div class="container">
-        Lista urzedow<br>
-        <app-lista-urzedow></app-lista-urzedow>
-        </div>
-    </ng-template>
-  </li>
-  <li ngbNavItem>
-    <a ngbNavLink>Zaloguj się</a>
-    <ng-template ngbNavContent>
-      <div>
-        <h2>Zaloguj się</h2>
-        <br>
-      </div>
-      <div>
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Podaj email">
-          </div><br>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Hasło</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Podaj hasło">
-          </div><br>
-          <button type="submit" class="btn btn-success">Zaloguj się</button>
-        </form>
-        
-      </div>
-    </ng-template>
-  </li>
-</ul>
-<div [ngbNavOutlet]="nav"></div>
+<app-nav-bar></app-nav-bar>
 </div>
+<router-outlet></router-outlet>
