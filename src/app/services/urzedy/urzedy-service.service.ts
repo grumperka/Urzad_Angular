@@ -46,4 +46,10 @@ export class UrzedyServiceService {
     console.log(urzedy);
     return this.http.delete<number>(this.apiUrl+'/'+urzedy.id,httpOptions);
   }
+
+  editUrzedy(id: number,urzedy: Urzedy): Observable<Urzedy>{
+    console.log("SERVICE");
+    console.log(urzedy);
+    return this.http.put<Urzedy>(this.apiUrl + '/' + id, urzedy, httpOptions);
+  }
 }

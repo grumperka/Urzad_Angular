@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UrzedyServiceService } from 'src/app/services/urzedy/urzedy-service.service';
 import { WojewodztwaServiceService } from 'src/app/services/wojewodztwa/wojewodztwa-service.service';
-import { Urzad_Woj } from '../objects/Urzad_Woj';
+import { Urzedy } from '../objects/Urzedy';
 import { Wojewodztwa } from '../objects/Wojewodztwa';
 
 @Component({
@@ -12,10 +12,11 @@ import { Wojewodztwa } from '../objects/Wojewodztwa';
 })
 export class EditUrzadComponent implements OnInit {
   id: number;
-  urzad: Urzad_Woj;
   listaWojewodztw: Wojewodztwa[] = [];
+  nazwa: string;
+  wojewodztwo_id: number;
 
-  constructor(private route: ActivatedRoute, private urzedyService: UrzedyServiceService,private wojewodztwaService: WojewodztwaServiceService) { }
+  constructor(private route: ActivatedRoute, private urzedyService: UrzedyServiceService, private wojewodztwaService: WojewodztwaServiceService) { }
 
   ngOnInit(): void {
 
@@ -28,12 +29,37 @@ export class EditUrzadComponent implements OnInit {
       this.wojewodztwaService.getWojewodztwa().subscribe((wojewodztwo) => this.listaWojewodztw = wojewodztwo);
 
       this.urzedyService.getUrzad(this.id).subscribe(resp => {
-        this.urzad = resp;
-        console.log(this.urzad);
+        this.id = resp.id;
+        this.nazwa = resp.nazwa_urzedu;
+        this.wojewodztwo_id = resp.wojewodztwo_id;
       })
-   });
+    });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    if (!this.nazwa || !this.wojewodztwo_id) {
+      alert('By edytować urząd, musisz podać jego nazwę i województwo');
+    } else {
+      const editUrzedy = {
+        id: this.id,
+        nazwa_urzedu: this.nazwa,
+        wojewodztwo_id: this.wojewodztwo_id
+      };
+
+      console.log(editUrzedy);
+
+      this.urzedyService.editUrzedy(this.id, editUrzedy).subscribe(res => {
+        console.log("RESPONSE: " + res);
+        alert('Edytowano dane urzedu');
+      },
+        err => {
+          console.log("ERROR: " + err);
+          alert('Wystąpił błąd. Proszę spróbować ponownie.');
+        }
+      );
+    }
+
+
+  }
 
 }
