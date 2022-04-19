@@ -1,1 +1,37 @@
-<p>lista-obywateli works!</p>
+<h1>Lista Obywateli</h1>>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nr.</th>
+            <th scope="col">Imie i nazwisko</th>
+            <th scope="col">Nazwisko rodowe</th>
+            <th scope="col">Płeć</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let obywatel of listaObywateli">
+            <th scope="row">{{ obywatel.id }}</th>
+
+            <td>{{ obywatel.imie }} {{ obywatel.nazwisko }}</td>
+            <td>{{ obywatel.nazwisko_rodowe }}</td>
+            <td>
+                <div *ngIf="obywatel.plec == 'm'; then trueBlock else falseBlock"></div>
+                <ng-template #trueBlock>mężczyzna</ng-template>
+                <ng-template #falseBlock>kobieta</ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="refreshLista()">
+    </ngb-pagination>
+
+    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshLista()">
+        <option [ngValue]="30">30 elementów na strone</option>
+        <option [ngValue]="60">75 elementów na strone</option>
+        <option [ngValue]="100">100 elementów na strone</option>
+        <option value="{{ collectionSize }}">Wszystkie elementy na strone</option>
+    </select>
+</div>

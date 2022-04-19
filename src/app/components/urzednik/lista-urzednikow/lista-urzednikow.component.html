@@ -1,1 +1,33 @@
-<p>lista-urzednikow works!</p>
+<h1>Lista Urzednikow</h1>>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nr.</th>
+            <th scope="col">Urzad Id</th>
+            <th scope="col">Imie i nazwisko</th>
+            <th scope="col">Id kierownika</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let urzednik of listaUrzednikow">
+            <th scope="row">{{ urzednik.id }}</th>
+            <td>
+                {{ urzednik.urzad_id }}
+            </td>
+            <td>{{ urzednik.imie }} {{ urzednik.nazwisko }}</td>
+            <td>{{ urzednik.kierownik_id }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="refreshLista()">
+    </ngb-pagination>
+
+    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshLista()">
+        <option [ngValue]="10">10 elementów na strone</option>
+        <option [ngValue]="30">30 elementów na strone</option>
+        <option value="{{ collectionSize }}">Wszystkie elementy na strone</option>
+    </select>
+</div>

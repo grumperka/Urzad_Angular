@@ -1,1 +1,37 @@
-<p>lista-kierownikow works!</p>
+<h1>Lista Kierowników</h1>>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nr.</th>
+            <th scope="col">Urzad</th>
+            <th scope="col">Imie i nazwisko</th>
+            <th scope="col">Czy zastępca?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let kierownik of listaKierownikow">
+            <th scope="row">{{ kierownik.id }}</th>
+            <td>
+                {{ kierownik.urzad_id }}
+            </td>
+            <td>{{ kierownik.imie }} {{ kierownik.nazwisko }}</td>
+            <td>
+                <div *ngIf="kierownik.czy_zastepca_T_N == 0; then trueBlock else falseBlock"></div>
+                <ng-template #trueBlock>Nie</ng-template>
+                <ng-template #falseBlock><b>Tak</b></ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="refreshLista()">
+    </ngb-pagination>
+
+    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshLista()">
+        <option [ngValue]="10">10 elementów na strone</option>
+        <option [ngValue]="30">30 elementów na strone</option>
+        <option value="{{ collectionSize }}">Wszystkie elementy na strone</option>
+    </select>
+</div>

@@ -1,1 +1,34 @@
-<p>lista-aktow-slubow works!</p>
+<h1>Akty ślubów</h1>>
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Nr.</th>
+      <th scope="col">Urzad</th>
+      <th scope="col">Urzednik</th>
+      <th scope="col">Id małżonka</th>
+      <th scope="col">Id małżonki</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let akty of listaAktow">
+      <th scope="row">{{ akty.id }}</th>
+      <td>
+        {{ akty.id_urzedu }}
+      </td>
+      <td>{{ akty.id_urzednika }}</td>
+      <td>{{ akty.id_malzonka }}</td>
+      <td>{{ akty.id_malzonki }}</td>
+    </tr>
+    </tbody>
+  </table>
+  
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+    </ngb-pagination>
+  
+    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
+      <option [ngValue]="10">10 elementów na strone</option>
+      <option [ngValue]="30">30 elementów na strone</option>
+      <option value="{{ collectionSize }}" >Wszystkie elementy na strone</option>
+    </select>
+  </div>
