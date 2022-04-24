@@ -1,4 +1,5 @@
-<h1>Lista Kierowników</h1>>
+<h1>Lista Kierowników</h1>
+<app-add-kierownik (onAddKierownik)="addKierownik($event)"></app-add-kierownik><br>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -6,6 +7,8 @@
             <th scope="col">Urzad</th>
             <th scope="col">Imie i nazwisko</th>
             <th scope="col">Czy zastępca?</th>
+            <th scope="col">Edytuj</th>
+            <th scope="col">Usuń</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +22,12 @@
                 <div *ngIf="kierownik.czy_zastepca_T_N == 0; then trueBlock else falseBlock"></div>
                 <ng-template #trueBlock>Nie</ng-template>
                 <ng-template #falseBlock><b>Tak</b></ng-template>
+            </td>
+            <td>
+                <fa-icon [ngStyle]="{'color': 'green'}" [icon]="faPencilAlt" (click)="editKierownik(kierownik)"></fa-icon> 
+            </td>
+            <td>
+                <fa-icon [ngStyle]="{'color': 'red'}" (click)='deleteKierownik(kierownik.id)' [icon]="faTimes"></fa-icon>
             </td>
         </tr>
     </tbody>

@@ -1,0 +1,26 @@
+<h2>Edytuj urzednika</h2>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="imie">Imię</label>
+      <input type="text" class="form-control" id="imie" [(ngModel)]="imie" [ngModelOptions]="{standalone: true}" aria-describedby="imie" placeholder="Podaj imię">
+    </div><br>
+    <div class="form-group">
+        <label for="nazwisko">Nazwisko</label>
+        <input type="text" class="form-control" id="nazwisko" [(ngModel)]="nazwisko" [ngModelOptions]="{standalone: true}" aria-describedby="nazwisko" placeholder="Podaj nazwisko">
+      </div><br>
+    <div class="form-group">
+      <label for="urzad_id">Urząd</label>
+    <select class="form-select" id="urzad_id" [(ngModel)]="urzad_id" [ngModelOptions]="{standalone: true}" aria-label="Domyślna wartość">
+        <option *ngFor="let urzad of listaUrzedow" [value]="urzad.id">{{ urzad.nazwa_urzedu }} - {{ urzad.nazwa_wojewodztwa }}</option>
+      </select>
+      </div>
+    <br>
+    <div class="form-group">
+        <label for="kierownik">Kierownik: {{ kierownik.imie }} {{ kierownik.nazwisko }}</label>
+      </div><br>
+    <div class="form-group">
+        <label for="nazwisko">Login</label>
+        <input type="text" class="form-control" id="login" [(ngModel)]="login" [ngModelOptions]="{standalone: true}" aria-describedby="login" placeholder="Podaj login">
+      </div><br>
+    <button type="submit" class="btn btn-warning">Edytuj</button>
+  </form>

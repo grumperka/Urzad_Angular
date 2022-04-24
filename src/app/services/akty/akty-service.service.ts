@@ -55,4 +55,15 @@ export class AktyServiceService {
     return this.http.get<Akty_zgonu[]>(this.apiUrlZgonow, { headers: header });
   }
   
+  addAktyRozwodu(akty_rozwodu: Akty_rozwodu){
+    console.log("SERVICE");
+    console.log(akty_rozwodu);
+    return this.http.post<Akty_rozwodu>(this.apiUrlRozwodow, akty_rozwodu, httpOptions);
+  }
+
+  deleteAktyRozwodu(id: number){
+    console.log("SERVICE");
+    return this.http.delete<Akty_rozwodu>(this.apiUrlRozwodow + "/" + id, httpOptions);
+  }
+  
 }

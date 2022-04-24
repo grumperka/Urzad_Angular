@@ -1,0 +1,34 @@
+<h2>Edytuj obywatela</h2>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="imie">Imię</label>
+      <input type="text" class="form-control" id="imie" [(ngModel)]="imie" [ngModelOptions]="{standalone: true}" aria-describedby="imie" placeholder="Podaj imię">
+    </div><br>
+    <div class="form-group">
+        <label for="nazwisko">Nazwisko</label>
+        <input type="text" class="form-control" id="nazwisko" [(ngModel)]="nazwisko" [ngModelOptions]="{standalone: true}" aria-describedby="nazwisko" placeholder="Podaj nazwisko">
+      </div><br>
+      <div class="form-group">
+        <label for="nazwisko_rodowe">Nazwisko rodowe</label>
+        <input type="text" class="form-control" id="nazwisko_rodowe" [(ngModel)]="nazwisko_rodowe" [ngModelOptions]="{standalone: true}" aria-describedby="nazwisko_rodowe" placeholder="Podaj nazwisko rodowe">
+      </div><br>
+      <div class="form-group">
+        <label for="pesel">PESEL</label>
+        <input type="number" class="form-control" id="pesel" [(ngModel)]="pesel" [ngModelOptions]="{standalone: true}" aria-describedby="pesel" placeholder="Podaj PESEL">
+      </div><br>
+    <div class="form-group">
+      <label for="wojewodztwo_id">Województwo</label>
+    <select class="form-select" id="wojewodztwo_id" [(ngModel)]="wojewodztwo_id" [ngModelOptions]="{standalone: true}" aria-label="Domyślna wartość">
+        <option *ngFor="let woj of listaWojewodztw" [value]="woj.id">{{ woj.nazwa }}</option>
+      </select>
+      </div><br>
+      <div class="form-group">
+        <label for="plec">Płeć</label>
+      <select class="form-select" id="plec" [(ngModel)]="plec" [ngModelOptions]="{standalone: true}" aria-label="Domyślna wartość">
+        <option value="k">kobieta</option>
+        <option value="m">mężczyzna</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success">Dodaj</button>
+  </form>

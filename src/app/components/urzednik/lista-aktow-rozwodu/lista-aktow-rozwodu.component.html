@@ -1,4 +1,7 @@
-<h1>Akty rozwodów</h1>>
+<h1>Akty rozwodów</h1>
+<br>
+<app-add-akt-rozwodu (onAddAktRozwodu)="addAktRozwodu($event)"></app-add-akt-rozwodu>
+<br>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -6,6 +9,8 @@
       <th scope="col">Urzad</th>
       <th scope="col">Urzednik</th>
       <th scope="col">Powod rozwodu</th>
+      <th scope="col">Edytuj</th>
+      <th scope="col">Usuń</th>
     </tr>
     </thead>
     <tbody>
@@ -16,6 +21,12 @@
       </td>
       <td>{{ akty.id_urzednika }}</td>
       <td>{{ akty.id_powodu_glownego }}</td>
+      <td>
+        <fa-icon [ngStyle]="{'color': 'green'}" [icon]="faPencilAlt" (click)="editAktRozwodu(akty)"></fa-icon> 
+    </td>
+      <td>
+        <fa-icon [ngStyle]="{'color': 'red'}" (click)='deleteAktRozwodu(akty.id)' [icon]="faTimes"></fa-icon>
+    </td>
     </tr>
     </tbody>
   </table>

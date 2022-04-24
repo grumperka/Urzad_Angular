@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { KierownicyServiceService } from 'src/app/services/kierownicy/kierownicy-service.service';
 import { Kierownicy } from '../../objects/Kierownicy';
+import { faTimes, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-kierownikow',
@@ -12,8 +14,10 @@ export class ListaKierownikowComponent implements OnInit {
   page: number = 1;
   pageSize: number = 10;
   collectionSize: number = 1;
+  faTimes = faTimes;
+  faPencilAlt = faPencilAlt;
 
-  constructor(private kierownicyService: KierownicyServiceService) { 
+  constructor(private kierownicyService: KierownicyServiceService, private router: Router) { 
     this.refreshLista();
   }
 
@@ -28,5 +32,28 @@ export class ListaKierownikowComponent implements OnInit {
       this.listaKierownikow = this.listaKierownikow
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
     });
+  }
+
+  addKierownik(kierownik: Kierownicy){
+    this.kierownicyService.addKierownik(kierownik).subscribe(res => {
+      alert('Dodano nowego kierownika.');
+      }
+      ,err => {
+        alert('Wystąpił błąd. Spróbuj ponownie.');
+      });
+  }
+
+  deleteKierownik(id: number){
+    this.kierownicyService.deleteKierownik(id).subscribe(res => {
+      alert('Usunięto kierownika.');
+      this.listaKierownikow = this.listaKierownikow.filter(f => f.id != id);
+      }
+      ,err => {
+        alert('Wystąpił błąd. Spróbuj ponownie.');
+      });
+  }
+
+  editKierownik(kierownik: Kierownicy){
+    this.router.navigateByUrl('/updateKierownik/' + kierownik.id);
   }
 }

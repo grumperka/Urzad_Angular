@@ -43,7 +43,7 @@ export class ListaUrzedowComponent implements OnInit {
   }
 
   editUrzedy(urzad: Urzedy){
-    this.router.navigateByUrl('/update/' + urzad.id);
+    this.router.navigateByUrl('/updateUrzad/' + urzad.id);
   }
 
 }

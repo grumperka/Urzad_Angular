@@ -22,6 +22,17 @@ import { AddUrzadComponent } from './components/add-urzad/add-urzad.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditUrzadComponent } from './components/edit-urzad/edit-urzad.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { AddKierownikComponent } from './components/urzednik/add-kierownik/add-kierownik.component';
+import { AddObywatelComponent } from './components/urzednik/add-obywatel/add-obywatel.component';
+import { AddUrzednikComponent } from './components/urzednik/add-urzednik/add-urzednik.component';
+import { AddAktUrodzeniaComponent } from './components/urzednik/add-akt-urodzenia/add-akt-urodzenia.component';
+import { AddAktSlubuComponent } from './components/urzednik/add-akt-slubu/add-akt-slubu.component';
+import { AddAktRozwoduComponent } from './components/urzednik/add-akt-rozwodu/add-akt-rozwodu.component';
+import { AddAktZgonuComponent } from './components/urzednik/add-akt-zgonu/add-akt-zgonu.component';
+import { EditKierownikComponent } from './components/urzednik/edit-kierownik/edit-kierownik.component';
+import { EditObywatelComponent } from './components/urzednik/edit-obywatel/edit-obywatel.component';
+import { EditUrzednikComponent } from './components/urzednik/edit-urzednik/edit-urzednik.component';
+import { EditAktRozwoduComponent } from './components/urzednik/edit-akt-rozwodu/edit-akt-rozwodu.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +50,18 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     ListaWojewodztwComponent,
     AddUrzadComponent,
     EditUrzadComponent,
-    NavBarComponent
+    NavBarComponent,
+    AddKierownikComponent,
+    AddObywatelComponent,
+    AddUrzednikComponent,
+    AddAktUrodzeniaComponent,
+    AddAktSlubuComponent,
+    AddAktRozwoduComponent,
+    AddAktZgonuComponent,
+    EditKierownikComponent,
+    EditObywatelComponent,
+    EditUrzednikComponent,
+    EditAktRozwoduComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ export interface Obywatele {
     imie: string;
     nazwisko: string;
     nazwisko_rodowe: string;
-    pesel: bigint;
+    pesel: number;
     plec: string;
     wojewodztwo_id: number;
 }

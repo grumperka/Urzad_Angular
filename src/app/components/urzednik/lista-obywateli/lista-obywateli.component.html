@@ -1,4 +1,7 @@
-<h1>Lista Obywateli</h1>>
+<h1>Lista Obywateli</h1>
+<br>
+<app-add-obywatel (onAddObywatel)="addObywatel($event)"></app-add-obywatel>
+<br>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -6,6 +9,7 @@
             <th scope="col">Imie i nazwisko</th>
             <th scope="col">Nazwisko rodowe</th>
             <th scope="col">Płeć</th>
+            <th scope="col">Edytuj</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +22,9 @@
                 <div *ngIf="obywatel.plec == 'm'; then trueBlock else falseBlock"></div>
                 <ng-template #trueBlock>mężczyzna</ng-template>
                 <ng-template #falseBlock>kobieta</ng-template>
+            </td>
+            <td>
+                <fa-icon [ngStyle]="{'color': 'green'}" [icon]="faPencilAlt" (click)="editObywatel(obywatel)"></fa-icon> 
             </td>
         </tr>
     </tbody>
