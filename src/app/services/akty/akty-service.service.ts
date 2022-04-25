@@ -47,6 +47,14 @@ export class AktyServiceService {
     return this.http.get<Akty_rozwodu[]>(this.apiUrlRozwodow, { headers: header });
   }
 
+  getAktRozwodu(id: number): Observable<Akty_rozwodu> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_rozwodu>(this.apiUrlRozwodow + "/" + id, { headers: header });
+  }
+
   getAktyZgonow(): Observable<Akty_zgonu[]> {
     const header = new HttpHeaders();
     header.append('Access-Control-Allow-Headers', 'Content-Type');
@@ -64,6 +72,11 @@ export class AktyServiceService {
   deleteAktyRozwodu(id: number){
     console.log("SERVICE");
     return this.http.delete<Akty_rozwodu>(this.apiUrlRozwodow + "/" + id, httpOptions);
+  }
+
+  editAktyRozwodu(akty_rozwodu: Akty_rozwodu){
+    console.log("SERVICE");
+    return this.http.put<Akty_rozwodu>(this.apiUrlRozwodow + "/" + akty_rozwodu.id, akty_rozwodu, httpOptions);
   }
   
 }
