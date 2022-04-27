@@ -1,1 +1,42 @@
-<p>add-akt-slubu works!</p>
+<h2>Dodaj akt ślubu</h2>
+<form (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+      <label for="id_malzonka">Małżonek</label>
+    <select class="form-select" id="id_malzonka" [(ngModel)]="id_malzonka" [ngModelOptions]="{standalone: true}" (click)="checkValueM(id_malzonka)" aria-label="Domyślna wartość">
+        <option *ngFor="let obywatelM of listaObywateliM" [value]="obywatelM.id">{{ obywatelM.imie }} {{ obywatelM.nazwisko }}</option>
+      </select>
+      </div>
+
+      <div class="form-group">
+        <label for="id_malzonki">Małżonka</label>
+      <select class="form-select" id="id_malzonki" [(ngModel)]="id_malzonki" [ngModelOptions]="{standalone: true}" (click)="checkValueK(id_malzonki)" aria-label="Domyślna wartość">
+          <option *ngFor="let obywatelK of listaObywateliK" [value]="obywatelK.id">{{ obywatelK.imie }} {{ obywatelK.nazwisko }}</option>
+        </select>
+        </div>
+
+      <div class="form-group">
+        <label for="urzad_id">Urzędnik</label>
+      <select class="form-select" id="id_urzednika" [(ngModel)]="id_urzednika" [ngModelOptions]="{standalone: true}" aria-label="Domyślna wartość">
+          <option *ngFor="let urzednik of listaUrzednikow" [value]="urzednik.id">{{ urzednik.imie }} {{ urzednik.nazwisko }} - Urząd od id:{{ urzednik.urzad_id }}</option>
+        </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="id_swiadka_1">Świadek 1</label>
+          <select class="form-select" id="id_swiadka_1" [(ngModel)]="id_swiadka_1" [ngModelOptions]="{standalone: true}" (click)="checkValueSM(id_swiadka_1)" aria-label="Domyślna wartość">
+              <option *ngFor="let obywatelM of listaSwiadkowM" [value]="obywatelM.id">{{ obywatelM.imie }} {{ obywatelM.nazwisko }}</option>
+            </select>
+            </div>
+      
+            <div class="form-group">
+              <label for="id_swiadka_2">Świadek 2</label>
+            <select class="form-select" id="id_swiadka_2" [(ngModel)]="id_swiadka_2" [ngModelOptions]="{standalone: true}" (click)="checkValueSK(id_swiadka_2)" aria-label="Domyślna wartość">
+                <option *ngFor="let obywatelK of listaSwiadkowK" [value]="obywatelK.id">{{ obywatelK.imie }} {{ obywatelK.nazwisko }}</option>
+              </select>
+              </div>
+
+    <br>
+    <button type="submit" class="btn btn-success">Dodaj</button>
+  </form>

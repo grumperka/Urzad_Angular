@@ -1,1 +1,20 @@
-<p>add-akt-zgonu works!</p>
+<h2>Dodaj akt zgonu</h2>
+<form (ngSubmit)="onSubmit()">
+    
+    <div class="form-group">
+      <label for="id_obywatela">Obywatel</label>
+    <select class="form-select" id="id_obywatela" [(ngModel)]="id_obywatela" [ngModelOptions]="{standalone: true}" aria-label="Domyślna wartość">
+        <option *ngFor="let obywatel of listaObywateli" [value]="obywatel.id">{{ obywatel.imie }} {{ obywatel.nazwisko }}</option>
+      </select>
+      </div>
+
+      <div class="form-group">
+        <label for="urzad_id">Urzędnik</label>
+      <select class="form-select" id="id_urzednika" [(ngModel)]="id_urzednika" [ngModelOptions]="{standalone: true}" aria-label="Domyślna wartość">
+          <option *ngFor="let urzednik of listaUrzednikow" [value]="urzednik.id">{{ urzednik.imie }} {{ urzednik.nazwisko }} - Urząd od id:{{ urzednik.urzad_id }}</option>
+        </select>
+        </div>
+
+    <br>
+    <button type="submit" class="btn btn-success">Dodaj</button>
+  </form>

@@ -62,21 +62,67 @@ export class AktyServiceService {
     header.append('Access-Control-Allow-Origin', '*');
     return this.http.get<Akty_zgonu[]>(this.apiUrlZgonow, { headers: header });
   }
+
+  //////////////////////////
   
-  addAktyRozwodu(akty_rozwodu: Akty_rozwodu){
+  addAktRozwodu(akty_rozwodu: Akty_rozwodu){
     console.log("SERVICE");
     console.log(akty_rozwodu);
     return this.http.post<Akty_rozwodu>(this.apiUrlRozwodow, akty_rozwodu, httpOptions);
   }
 
-  deleteAktyRozwodu(id: number){
+  deleteAktRozwodu(id: number){
     console.log("SERVICE");
     return this.http.delete<Akty_rozwodu>(this.apiUrlRozwodow + "/" + id, httpOptions);
   }
 
-  editAktyRozwodu(akty_rozwodu: Akty_rozwodu){
+  editAktRozwodu(akty_rozwodu: Akty_rozwodu){
     console.log("SERVICE");
     return this.http.put<Akty_rozwodu>(this.apiUrlRozwodow + "/" + akty_rozwodu.id, akty_rozwodu, httpOptions);
   }
   
+  ///////////////////////////
+
+  addAktSlubu(akty_slubow: Akty_slubow): Observable<Akty_slubow> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.post<Akty_slubow>(this.apiUrlSlubow, akty_slubow,{ headers: header });
+  }
+
+  deleteAktSlubu(id: number){
+    console.log("SERVICE");
+    return this.http.delete<Akty_slubow>(this.apiUrlSlubow + "/" + id, httpOptions);
+  }
+
+  /////////////////////////////
+
+  addAktUrodzenia(akty_urodzenia: Akty_urodzenia): Observable<Akty_urodzenia> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.post<Akty_urodzenia>(this.apiUrlUrodzenia, akty_urodzenia,{ headers: header });
+  }
+
+  deleteAktUrodzenia(id: number){
+    console.log("SERVICE");
+    return this.http.delete<Akty_urodzenia>(this.apiUrlUrodzenia + "/" + id, httpOptions);
+  }
+
+  /////////////////////////////
+
+  addAktZgonow(akty_zgonu: Akty_zgonu): Observable<Akty_zgonu> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.post<Akty_zgonu>(this.apiUrlZgonow, akty_zgonu,{ headers: header });
+  }
+
+  deleteAktZgonu(id: number){
+    console.log("SERVICE");
+    return this.http.delete<Akty_urodzenia>(this.apiUrlZgonow + "/" + id, httpOptions);
+  }
 }

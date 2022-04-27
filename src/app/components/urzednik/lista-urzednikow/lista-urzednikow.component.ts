@@ -36,9 +36,9 @@ export class ListaUrzednikowComponent implements OnInit {
   }
 
   addUrzednicy(urzednik: Urzednicy){
-    this.urzednicyService.addUrzednik(urzednik).subscribe(res => {
-        //this.listaUrzednikow.push(urzednik);
+    this.urzednicyService.addUrzednik(urzednik).subscribe(resp => {
         alert('Dodano nowego urzędnika.');
+        this.listaUrzednikow.push(resp);
     }
     , err => {
       console.log(err);

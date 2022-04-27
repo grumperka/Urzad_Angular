@@ -35,8 +35,9 @@ export class ListaKierownikowComponent implements OnInit {
   }
 
   addKierownik(kierownik: Kierownicy){
-    this.kierownicyService.addKierownik(kierownik).subscribe(res => {
+    this.kierownicyService.addKierownik(kierownik).subscribe(resp => {
       alert('Dodano nowego kierownika.');
+      this.listaKierownikow.push(resp);
       }
       ,err => {
         alert('Wystąpił błąd. Spróbuj ponownie.');

@@ -64,6 +64,30 @@ export class ObywateleServiceService {
     return this.http.get<Obywatele[]>(this.apiUrl+"/getRozwodnikow/"+id, { headers: header });
   }
 
+  getObywateleSingle(){
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Obywatele[]>(this.apiUrl+"/getSingle", { headers: header });
+  }
+
+  getObywateleAlive(){
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Obywatele[]>(this.apiUrl+"/getAlive", { headers: header });
+  }
+
+  getObywateleAliveWithoutAktUrodzenia(){
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Obywatele[]>(this.apiUrl+"/getAliveWithoutAktUrodzenia", { headers: header });
+  }
+
   addObywatel(obywatel: Obywatele){
     console.log("SERVICE");
     console.log(obywatel);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { AktyServiceService } from 'src/app/services/akty/akty-service.service';
 import { Akty_zgonu } from '../../objects/Akty_zgonu';
 
@@ -12,6 +13,7 @@ export class ListaAktowZgonuComponent implements OnInit {
   page: number = 1;
   pageSize: number = 10;
   collectionSize: number = 1;
+  faTimes = faTimes;
 
   constructor(private aktyService: AktyServiceService) {
     this.refreshCountries();
@@ -27,6 +29,26 @@ export class ListaAktowZgonuComponent implements OnInit {
     
       this.listaAktow = this.listaAktow
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+    });
+  }
+
+  deleteAktZgonu(id: number){
+    this.aktyService.deleteAktZgonu(id).subscribe(resp => {
+      alert("Akt zgonu został usunięty.");
+      this.listaAktow = this.listaAktow.filter(f => f.id != id);
+    }, err => {
+      console.log(err);
+      alert("Wystąpił błąd. Spróbuj ponownie.");
+    });
+  }
+
+  addAktZgonu(akt_zgonu: Akty_zgonu){
+    this.aktyService.addAktZgonow(akt_zgonu).subscribe(resp => {
+      alert("Akt zgonu został dodany.");
+      this.listaAktow.push(resp);
+    }, err => {
+      console.log(err);
+      alert("Wystąpił błąd. Spróbuj ponownie.");
     });
   }
 

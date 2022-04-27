@@ -30,11 +30,6 @@ export class EditAktRozwoduComponent implements OnInit {
       this.aktyService.getAktRozwodu(this.id).subscribe(resp => {
         this.id = resp.id;
         this.z_orzekaniem_winy_T_N = resp.z_orzekaniem_winy_T_N;
-        console.log("OO: " + resp);
-        console.log("OO: " + resp.id);
-        console.log("OO: " + resp.z_orzekaniem_winy_T_N);
-        console.log("OO: " + resp.id_powodu_glownego);
-        console.log("OO: " + resp.czy_wylacznie_T_N);
         this.id_powodu_glownego = resp.id_powodu_glownego;
         this.czy_wylacznie_T_N = resp.czy_wylacznie_T_N;
       });
@@ -74,7 +69,7 @@ export class EditAktRozwoduComponent implements OnInit {
       czy_wylacznie_T_N: this.czy_wylacznie_T_N
     };
 
-    this.aktyService.editAktyRozwodu(editAktRozwodu).subscribe(resp => {
+    this.aktyService.editAktRozwodu(editAktRozwodu).subscribe(resp => {
       alert("Akt rozwodu został edytowany.");
     }, err => {
       console.log(err);

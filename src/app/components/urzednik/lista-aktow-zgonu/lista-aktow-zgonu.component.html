@@ -1,6 +1,6 @@
 <h1>Akty zgonu</h1>
 <br>
-<app-add-akt-zgonu></app-add-akt-zgonu>
+<app-add-akt-zgonu (onAddAktZgonu)="addAktZgonu($event)"></app-add-akt-zgonu>
 <br>
 <table class="table table-striped">
     <thead>
@@ -9,6 +9,7 @@
       <th scope="col">Urzad</th>
       <th scope="col">Urzednik</th>
       <th scope="col">Id obywatela</th>
+      <th scope="col">Usuń</th>
     </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
       </td>
       <td>{{ akty.id_urzednika }}</td>
       <td>{{ akty.id_obywatela }}</td>
+      <td><fa-icon [ngStyle]="{'color': 'red'}" (click)='deleteAktZgonu(akty.id)' [icon]="faTimes"></fa-icon></td>
     </tr>
     </tbody>
   </table>
@@ -30,6 +32,6 @@
     <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
       <option [ngValue]="10">10 elementów na strone</option>
       <option [ngValue]="30">30 elementów na strone</option>
-      <option value="{{ collectionSize }}" >Wszystkie elementy na strone</option>
+      <option value="{{ collectionSize }}">Wszystkie elementy na strone</option>
     </select>
   </div>

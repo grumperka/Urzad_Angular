@@ -1,6 +1,6 @@
 <h1>Akty urodzenia</h1>
 <br>
-<app-add-akt-urodzenia></app-add-akt-urodzenia>
+<app-add-akt-urodzenia (onAddAktUrodzenia)="addAktUrodzenia($event)"></app-add-akt-urodzenia>
 <br>
 <table class="table table-striped">
     <thead>
@@ -9,6 +9,7 @@
       <th scope="col">Urzad</th>
       <th scope="col">Urzednik</th>
       <th scope="col">Id obywatela</th>
+      <th scope="col">Usuń</th>
     </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
       </td>
       <td>{{ akty.id_urzednika }}</td>
       <td>{{ akty.id_obywatela }}</td>
+      <td><fa-icon [ngStyle]="{'color': 'red'}" (click)='deleteAktUrodzenia(akty.id)' [icon]="faTimes"></fa-icon></td>
     </tr>
     </tbody>
   </table>

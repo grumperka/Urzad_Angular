@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { AktyServiceService } from 'src/app/services/akty/akty-service.service';
 import { Akty_urodzenia } from '../../objects/Akty_urodzenia';
 
@@ -12,6 +13,7 @@ export class ListaAktowUrodzeniaComponent implements OnInit {
   page: number = 1;
   pageSize: number = 10;
   collectionSize: number = 1;
+  faTimes = faTimes;
 
   constructor(private aktyService: AktyServiceService) {
     this.refreshCountries();
@@ -29,5 +31,27 @@ export class ListaAktowUrodzeniaComponent implements OnInit {
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
     });
   }
+
+  deleteAktUrodzenia(id: number){
+    this.aktyService.deleteAktUrodzenia(id).subscribe(resp => {
+      alert("Akt urodzenia został usunięty.");
+      this.listaAktow = this.listaAktow.filter(f => f.id != id);
+    }, err => {
+      console.log(err);
+      alert("Wystąpił błąd. Spróbuj ponownie.");
+    });
+  }
+
+  addAktUrodzenia(akt_urodzenia: Akty_urodzenia){
+    this.aktyService.addAktUrodzenia(akt_urodzenia).subscribe(resp => {
+      alert("Dodano nowy akt urodzenia.");
+      this.listaAktow.push(resp);
+    },
+      err => {
+        console.log(err);
+        alert("Wystąpił błąd. Spróbuj ponownie.");
+      });
+
+ }
 
 }

@@ -35,8 +35,9 @@ export class ListaObywateliComponent implements OnInit {
   }
 
   addObywatel(obywatel: Obywatele){
-    this.obywateleService.addObywatel(obywatel).subscribe(res => {
+    this.obywateleService.addObywatel(obywatel).subscribe(resp => {
       alert('Dodano nowego obywatela.');
+      this.listaObywateli.push(resp);
     }, err => {
       alert('Wystąpił błąd. Spróbuj podobnie.');
     });

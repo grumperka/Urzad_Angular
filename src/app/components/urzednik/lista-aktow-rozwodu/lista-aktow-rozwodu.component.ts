@@ -36,9 +36,9 @@ export class ListaAktowRozwoduComponent implements OnInit {
   }
 
   addAktRozwodu(akty_rozwodu: Akty_rozwodu){
-     this.aktyService.addAktyRozwodu(akty_rozwodu).subscribe(resp => {
+     this.aktyService.addAktRozwodu(akty_rozwodu).subscribe(resp => {
        alert("Dodano nowy akt rozwodu.");
-       this.listaAktow.push(akty_rozwodu);
+       this.listaAktow.push(resp);
      },
        err => {
          console.log(err);
@@ -49,7 +49,7 @@ export class ListaAktowRozwoduComponent implements OnInit {
   }
 
   deleteAktRozwodu(id: number){
-    this.aktyService.deleteAktyRozwodu(id).subscribe(resp => {
+    this.aktyService.deleteAktRozwodu(id).subscribe(resp => {
       alert("Usunięto akt rozwodu.");
       this.listaAktow = this.listaAktow.filter(f => f.id != id);
     },
