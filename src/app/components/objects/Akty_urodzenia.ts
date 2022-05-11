@@ -4,6 +4,6 @@ export interface Akty_urodzenia {
     id_ojca: number;
     id_matki: number;
     id_urzedu: number;
-    id_urzednika: number;
+    id_urzednika: number | null;
     data_wydania_aktu: Date;
 }

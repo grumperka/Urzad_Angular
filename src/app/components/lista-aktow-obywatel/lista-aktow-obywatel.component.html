@@ -1,0 +1,97 @@
+<br>
+<h2 *ngIf="listaAktowUrodzenia.length > 0">Lista aktów urodzenia</h2>
+<table *ngIf="listaAktowUrodzenia.length > 0" class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Nr.</th>
+      <th scope="col">Urzad</th>
+      <th scope="col">Urzednik</th>
+      <th scope="col">Data wydania aktu</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let akty of listaAktowUrodzenia">
+      <th scope="row">{{ akty.id }}</th>
+      <td>
+        {{ akty.id_urzedu }}
+      </td>
+      <td>{{ akty.id_urzednika }}</td>
+      <td>{{ akty.data_wydania_aktu }}</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<h2 *ngIf="listaAktowSlubu.length > 0">Lista aktów ślubów</h2>
+<table *ngIf="listaAktowSlubu.length > 0" class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Nr.</th>
+      <th scope="col">Urzad</th>
+      <th scope="col">Urzednik</th>
+      <th scope="col">Małżonek</th>
+      <th scope="col">Małżonka</th>
+      <th scope="col">Świadek 1</th>
+      <th scope="col">Świadek 2</th>
+      <th scope="col">Data wydania aktu</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let akty of listaAktowSlubu">
+      <th scope="row">{{ akty.id }}</th>
+      <td>
+        {{ akty.id_urzedu }}
+      </td>
+      <td>{{ akty.id_urzednika }}</td>
+      <td>{{ akty.id_malzonka }}</td>
+      <td>{{ akty.id_malzonki }}</td>
+      <td>{{ akty.id_swiadka_1 }}</td>
+      <td>{{ akty.id_swiadka_2 }}</td>
+      <td>{{ akty.data_wydania_aktu }}</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<h2 *ngIf="listaAktowRozwodu.length > 0">Lista aktów rozwodów</h2>
+<table *ngIf="listaAktowRozwodu.length > 0" class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Nr.</th>
+      <th scope="col">Urzad</th>
+      <th scope="col">Urzednik</th>
+      <th scope="col">Rozwodnik</th>
+      <th scope="col">Rozwodniczka</th>
+      <th scope="col">Data wydania aktu</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let akty of listaAktowRozwodu">
+      <th scope="row">{{ akty.id }}</th>
+      <td>
+        {{ akty.id_urzedu }}
+      </td>
+      <td>{{ akty.id_urzednika }}</td>
+      <td>{{ akty.id_rozwodnika }}</td>
+      <td>{{ akty.id_rozwodnika }}</td>
+      <td>{{ akty.data_wydania_aktu_rozwodu }}</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<h2 *ngIf="listaAktowZgonow.length > 0">Lista aktów zgonów</h2>
+<table *ngIf="listaAktowZgonow.length > 0" class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Nr.</th>
+      <th scope="col">Urzad</th>
+      <th scope="col">Urzednik</th>
+      <th scope="col">Data wydania aktu</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let akty of listaAktowZgonow">
+      <th scope="row">{{ akty.id }}</th>
+      <td>
+        {{ akty.id_urzedu }}
+      </td>
+      <td>{{ akty.id_urzednika }}</td>
+      <td>{{ akty.data_wydania_aktu }}</td>
+    </tr>
+    </tbody>
+</table>
+<br>

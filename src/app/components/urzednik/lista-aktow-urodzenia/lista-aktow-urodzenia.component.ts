@@ -14,12 +14,27 @@ export class ListaAktowUrodzeniaComponent implements OnInit {
   pageSize: number = 10;
   collectionSize: number = 1;
   faTimes = faTimes;
+  isKierownik: boolean = false;
+  isAdministrator: boolean = false;
+  isUrzednik: boolean = false;
 
   constructor(private aktyService: AktyServiceService) {
     this.refreshCountries();
    }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("rola") == "kierownik")
+    {
+      this.isKierownik = true;
+    }  
+    else if(sessionStorage.getItem("rola") == "administrator")
+    {
+      this.isAdministrator = true;
+    }
+    else if(sessionStorage.getItem("rola") == "urzednik")
+    {
+      this.isUrzednik = true;
+    }
   }
 
   refreshCountries() {

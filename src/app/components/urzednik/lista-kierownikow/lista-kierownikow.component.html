@@ -1,5 +1,5 @@
 <h1>Lista Kierowników</h1>
-<app-add-kierownik (onAddKierownik)="addKierownik($event)"></app-add-kierownik><br>
+<app-add-kierownik *ngIf="isAdministrator == true;" (onAddKierownik)="addKierownik($event)"></app-add-kierownik><br>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -7,8 +7,8 @@
             <th scope="col">Urzad</th>
             <th scope="col">Imie i nazwisko</th>
             <th scope="col">Czy zastępca?</th>
-            <th scope="col">Edytuj</th>
-            <th scope="col">Usuń</th>
+            <th *ngIf="isKierownik == true || isAdministrator == true;" scope="col">Edytuj</th>
+            <th *ngIf="isAdministrator == true;" scope="col">Usuń</th>
         </tr>
     </thead>
     <tbody>
@@ -24,10 +24,10 @@
                 <ng-template #falseBlock><b>Tak</b></ng-template>
             </td>
             <td>
-                <fa-icon [ngStyle]="{'color': 'green'}" [icon]="faPencilAlt" (click)="editKierownik(kierownik)"></fa-icon> 
+                <fa-icon *ngIf="isKierownik == true || isAdministrator == true;" [ngStyle]="{'color': 'green'}" [icon]="faPencilAlt" (click)="editKierownik(kierownik)"></fa-icon> 
             </td>
             <td>
-                <fa-icon [ngStyle]="{'color': 'red'}" (click)='deleteKierownik(kierownik.id)' [icon]="faTimes"></fa-icon>
+                <fa-icon *ngIf="isAdministrator == true;" [ngStyle]="{'color': 'red'}" (click)='deleteKierownik(kierownik.id)' [icon]="faTimes"></fa-icon>
             </td>
         </tr>
     </tbody>

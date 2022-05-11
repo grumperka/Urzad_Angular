@@ -47,10 +47,6 @@ export class AddAktSlubuComponent implements OnInit {
       errorInfo += 'Pole MAŁŻONKI nie może być puste \n';
     }
 
-    if(!this.id_urzednika) {
-      errorInfo += 'Pole URZĘDNIK nie może być puste \n';
-    }
-
     if(!this.id_swiadka_1) {
       errorInfo += 'Pole ŚWIADEK 1 nie może być puste \n';
     }
@@ -63,6 +59,8 @@ export class AddAktSlubuComponent implements OnInit {
       alert(errorInfo);
     } else {
     console.log("SUBMIT");
+
+    this.id_urzednika = Number(sessionStorage.getItem("userID"));
 
     const newAktSlubu = {
       id: 0,

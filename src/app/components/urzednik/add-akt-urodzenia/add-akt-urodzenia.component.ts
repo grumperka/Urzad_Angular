@@ -20,7 +20,7 @@ export class AddAktUrodzeniaComponent implements OnInit {
   listaOjcow: Array<Obywatele> = [];
   id_matki: number;
   listaMatek: Array<Obywatele> = [];
-  id_urzednika: number;
+  id_urzednika: number | null;
   listaUrzednikow: Array<Urzednicy> = [];
   data_wydania_aktu: Date;
   @Output() onAddAktUrodzenia: EventEmitter<Akty_urodzenia> = new EventEmitter();
@@ -85,14 +85,13 @@ export class AddAktUrodzeniaComponent implements OnInit {
       errorInfo += 'Pole MATKA nie może być puste \n';
     }
 
-    if(!this.id_urzednika) {
-      errorInfo += 'Pole URZĘDNIK ŚLUBU nie może być puste \n';
-    }
 
     if(errorInfo != ""){
       alert(errorInfo);
     } else {
     console.log("SUBMIT");
+
+    this.id_urzednika = Number(sessionStorage.getItem("userID"));
 
     const newAktUrodzenia = {
       id: 0,

@@ -1,6 +1,6 @@
 <h1>Lista Obywateli</h1>
 <br>
-<app-add-obywatel (onAddObywatel)="addObywatel($event)"></app-add-obywatel>
+<app-add-obywatel *ngIf="isAdministrator == true || isKierownik == true || isUrzednik == true;"  (onAddObywatel)="addObywatel($event)"></app-add-obywatel>
 <br>
 <table class="table table-striped">
     <thead>
@@ -9,7 +9,7 @@
             <th scope="col">Imie i nazwisko</th>
             <th scope="col">Nazwisko rodowe</th>
             <th scope="col">Płeć</th>
-            <th scope="col">Edytuj</th>
+            <th *ngIf="isKierownik == true || isAdministrator == true;" scope="col">Edytuj</th>
         </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@
                 <ng-template #falseBlock>kobieta</ng-template>
             </td>
             <td>
-                <fa-icon [ngStyle]="{'color': 'green'}" [icon]="faPencilAlt" (click)="editObywatel(obywatel)"></fa-icon> 
+                <fa-icon *ngIf="isKierownik == true || isAdministrator == true;" [ngStyle]="{'color': 'green'}" [icon]="faPencilAlt" (click)="editObywatel(obywatel)"></fa-icon> 
             </td>
         </tr>
     </tbody>

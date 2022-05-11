@@ -15,14 +15,6 @@
         </select>
         </div>
 
-      <div class="form-group">
-        <label for="urzad_id">Urzędnik</label>
-      <select class="form-select" id="id_urzednika" [(ngModel)]="id_urzednika" [ngModelOptions]="{standalone: true}" aria-label="Domyślna wartość">
-          <option *ngFor="let urzednik of listaUrzednikow" [value]="urzednik.id">{{ urzednik.imie }} {{ urzednik.nazwisko }} - Urząd od id:{{ urzednik.urzad_id }}</option>
-        </select>
-        </div>
-
-
         <div class="form-group">
             <label for="id_swiadka_1">Świadek 1</label>
           <select class="form-select" id="id_swiadka_1" [(ngModel)]="id_swiadka_1" [ngModelOptions]="{standalone: true}" (click)="checkValueSM(id_swiadka_1)" aria-label="Domyślna wartość">

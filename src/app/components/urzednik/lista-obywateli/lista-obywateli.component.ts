@@ -16,7 +16,10 @@ export class ListaObywateliComponent implements OnInit {
   collectionSize: number = 1;
   faTimes = faTimes;
   faPencilAlt = faPencilAlt;
-
+  isKierownik: boolean = false;
+  isAdministrator: boolean = false;
+  isUrzednik: boolean = false;
+  
   constructor(private obywateleService: ObywateleServiceService, private router: Router) { 
     this.refreshLista();
   }
@@ -32,6 +35,19 @@ export class ListaObywateliComponent implements OnInit {
       this.listaObywateli = this.listaObywateli
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
     });
+
+    if(sessionStorage.getItem("rola") == "kierownik")
+    {
+      this.isKierownik = true;
+    } 
+    else if(sessionStorage.getItem("rola") == "administrator")
+    {
+      this.isAdministrator = true;
+    }
+    else if(sessionStorage.getItem("rola") == "urzednik")
+    {
+      this.isUrzednik = true;
+    }
   }
 
   addObywatel(obywatel: Obywatele){

@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import { AktyServiceService } from 'src/app/services/akty/akty-service.service';
+import { Akty_rozwodu } from '../../objects/Akty_rozwodu';
+import { Akty_slubow } from '../../objects/Akty_slubow';
+import { Akty_urodzenia } from '../../objects/Akty_urodzenia';
+import { Akty_zgonu } from '../../objects/Akty_zgonu';
+
+@Component({
+  selector: 'app-lista-aktow-urzednik',
+  templateUrl: './lista-aktow-urzednik.component.html',
+  styleUrls: ['./lista-aktow-urzednik.component.css']
+})
+export class ListaAktowUrzednikComponent implements OnInit {
+  listaAktowUrodzenia: Akty_urodzenia[] = [];
+  listaAktowSlubu: Akty_slubow[] = [];
+  listaAktowRozwodu: Akty_rozwodu[] = [];
+  listaAktowZgonow: Akty_zgonu[] = [];
+  userID: string | null;
+
+
+  constructor(private aktyService: AktyServiceService) { }
+
+  ngOnInit(): void {
+    this.userID = sessionStorage.getItem("userID");
+    console.log(this.userID + " this.userID");
+
+    if(this.userID != null){
+    this.aktyService.getAktyUrodzeniaUrzednik(this.userID).subscribe((lista) => this.listaAktowUrodzenia = lista);
+    this.aktyService.getAktySlubowUrzednik(this.userID).subscribe((lista) => this.listaAktowSlubu = lista);
+    this.aktyService.getAktRozwoduUrzednik(this.userID).subscribe((lista) => this.listaAktowRozwodu = lista);
+    this.aktyService.getAktyZgonowUrzednik(this.userID).subscribe((lista) => this.listaAktowZgonow = lista);
+  }
+  }
+
+}

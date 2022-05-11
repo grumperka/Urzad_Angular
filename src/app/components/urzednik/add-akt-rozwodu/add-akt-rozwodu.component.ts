@@ -60,10 +60,6 @@ export class AddAktRozwoduComponent implements OnInit {
       errorInfo += 'Pole ROZWODNICZKA nie może być puste \n';
     }
 
-    if(!this.id_urzednika) {
-      errorInfo += 'Pole URZĘDNIK nie może być puste \n';
-    }
-
     if(!this.data_slubu) {
       errorInfo += 'Pole DATA ŚLUBU nie może być puste \n';
     }
@@ -84,6 +80,8 @@ export class AddAktRozwoduComponent implements OnInit {
       alert(errorInfo);
     } else {
     console.log("SUBMIT");
+
+    this.id_urzednika = Number(sessionStorage.getItem("userID"));
 
     const newAktRozwodu = {
       id: 0,

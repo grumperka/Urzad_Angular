@@ -1,6 +1,6 @@
 <h1>Akty rozwodów</h1>
 <br>
-<app-add-akt-rozwodu (onAddAktRozwodu)="addAktRozwodu($event)"></app-add-akt-rozwodu>
+<app-add-akt-rozwodu *ngIf="isUrzednik == true;" (onAddAktRozwodu)="addAktRozwodu($event)"></app-add-akt-rozwodu>
 <br>
 <table class="table table-striped">
     <thead>
@@ -9,8 +9,8 @@
       <th scope="col">Urzad</th>
       <th scope="col">Urzednik</th>
       <th scope="col">Powod rozwodu</th>
-      <th scope="col">Edytuj</th>
-      <th scope="col">Usuń</th>
+      <th *ngIf="isKierownik == true || isUrzednik == true || isAdministrator == true;" scope="col">Edytuj</th>
+      <th *ngIf="isKierownik == true || isUrzednik == true || isAdministrator == true;" scope="col">Usuń</th>
     </tr>
     </thead>
     <tbody>
@@ -22,10 +22,10 @@
       <td>{{ akty.id_urzednika }}</td>
       <td>{{ akty.id_powodu_glownego }}</td>
       <td>
-        <fa-icon [ngStyle]="{'color': 'green'}" [icon]="faPencilAlt" (click)="editAktRozwodu(akty)"></fa-icon> 
+        <fa-icon *ngIf="isKierownik == true || isUrzednik == true || isAdministrator == true;" [ngStyle]="{'color': 'green'}" [icon]="faPencilAlt" (click)="editAktRozwodu(akty)"></fa-icon> 
     </td>
       <td>
-        <fa-icon [ngStyle]="{'color': 'red'}" (click)='deleteAktRozwodu(akty.id)' [icon]="faTimes"></fa-icon>
+        <fa-icon *ngIf="isKierownik == true || isUrzednik == true || isAdministrator == true;" [ngStyle]="{'color': 'red'}" (click)='deleteAktRozwodu(akty.id)' [icon]="faTimes"></fa-icon>
     </td>
     </tr>
     </tbody>

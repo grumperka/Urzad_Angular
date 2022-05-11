@@ -125,4 +125,106 @@ export class AktyServiceService {
     console.log("SERVICE");
     return this.http.delete<Akty_urodzenia>(this.apiUrlZgonow + "/" + id, httpOptions);
   }
+
+  ///////////////////////////////////
+  getAktyUrodzeniaObywatel(id_obywatela: string): Observable<Akty_urodzenia[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_urodzenia[]>(this.apiUrlUrodzenia + "/getAkt_urodzeniaFromUser/"+ id_obywatela, { headers: header });
+  }
+
+  getAktySlubowObywatel(id_obywatela: string): Observable<Akty_slubow[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_slubow[]>(this.apiUrlSlubow + "/getAkt_slubuFromUser/"+ id_obywatela, { headers: header });
+  }
+
+
+  getAktRozwoduObywatel(id_obywatela: string): Observable<Akty_rozwodu[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_rozwodu[]>(this.apiUrlRozwodow + "/getAkt_rozwoduFromUser/"+ id_obywatela, { headers: header });
+  }
+
+  getAktyZgonowObywatel(id_obywatela: string): Observable<Akty_zgonu[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_zgonu[]>(this.apiUrlZgonow + "/getAkt_zgonuFromUser/"+ id_obywatela, { headers: header });
+  }
+
+  ///////////////////////////////////
+  getAktyUrodzeniaUrzednik(id_urzednika: string): Observable<Akty_urodzenia[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_urodzenia[]>(this.apiUrlUrodzenia + "/getAkt_urodzeniaFromUrzednik/"+ id_urzednika, { headers: header });
+  }
+
+  getAktySlubowUrzednik(id_urzednika: string): Observable<Akty_slubow[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_slubow[]>(this.apiUrlSlubow + "/getAkt_slubuFromUrzednik/"+ id_urzednika, { headers: header });
+  }
+
+
+  getAktRozwoduUrzednik(id_urzednika: string): Observable<Akty_rozwodu[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_rozwodu[]>(this.apiUrlRozwodow + "/getAkt_rozwoduFromUrzednik/"+ id_urzednika, { headers: header });
+  }
+
+  getAktyZgonowUrzednik(id_urzednika: string): Observable<Akty_zgonu[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_zgonu[]>(this.apiUrlZgonow + "/getAkt_zgonuFromUrzednik/"+ id_urzednika, { headers: header });
+  }
+
+  ///////////////////////////////////
+  getAktyUrodzeniaUrzad(id_urzedu: string): Observable<Akty_urodzenia[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_urodzenia[]>(this.apiUrlUrodzenia + "/getAkt_urodzeniaFromUrzad/"+ id_urzedu, { headers: header });
+  }
+
+  getAktySlubowUrzad(id_urzedu: string): Observable<Akty_slubow[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_slubow[]>(this.apiUrlSlubow + "/getAkt_slubuFromUrzad/"+ id_urzedu, { headers: header });
+  }
+
+
+  getAktRozwoduUrzad(id_urzedu: string): Observable<Akty_rozwodu[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_rozwodu[]>(this.apiUrlRozwodow + "/getAkt_rozwoduFromUrzad/"+ id_urzedu, { headers: header });
+  }
+
+  getAktyZgonowUrzad(id_urzedu: string): Observable<Akty_zgonu[]> {
+    const header = new HttpHeaders();
+    header.append('Access-Control-Allow-Headers', 'Content-Type');
+    header.append('Access-Control-Allow-Methods', 'GET');
+    header.append('Access-Control-Allow-Origin', '*');
+    return this.http.get<Akty_zgonu[]>(this.apiUrlZgonow + "/getAkt_zgonuFromUrzad/"+ id_urzedu, { headers: header });
+  }
 }

@@ -33,6 +33,11 @@ import { EditKierownikComponent } from './components/urzednik/edit-kierownik/edi
 import { EditObywatelComponent } from './components/urzednik/edit-obywatel/edit-obywatel.component';
 import { EditUrzednikComponent } from './components/urzednik/edit-urzednik/edit-urzednik.component';
 import { EditAktRozwoduComponent } from './components/urzednik/edit-akt-rozwodu/edit-akt-rozwodu.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { LoggedComponent } from './components/logged/logged.component';
+import { ListaAktowUrzednikComponent } from './components/urzednik/lista-aktow-urzednik/lista-aktow-urzednik.component';
+import { ListaAktowObywatelComponent } from './components/lista-aktow-obywatel/lista-aktow-obywatel.component';
+import { ListaAktowUrzadComponent } from './components/urzednik/lista-aktow-urzad/lista-aktow-urzad.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,12 @@ import { EditAktRozwoduComponent } from './components/urzednik/edit-akt-rozwodu/
     EditKierownikComponent,
     EditObywatelComponent,
     EditUrzednikComponent,
-    EditAktRozwoduComponent
+    EditAktRozwoduComponent,
+    LoginFormComponent,
+    LoggedComponent,
+    ListaAktowUrzednikComponent,
+    ListaAktowObywatelComponent,
+    ListaAktowUrzadComponent
   ],
   imports: [
     BrowserModule,

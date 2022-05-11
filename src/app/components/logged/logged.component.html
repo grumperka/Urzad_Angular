@@ -1,0 +1,6 @@
+<div *ngIf="isAdministrator == true">
+    <h1>Zalogowałeś się na konto administratora</h1>
+</div>
+<app-lista-aktow-obywatel *ngIf="isObywatel == true"></app-lista-aktow-obywatel>
+<app-lista-aktow-urzad *ngIf="isKierownik == true"></app-lista-aktow-urzad>
+<app-lista-aktow-urzednik *ngIf="isUrzednik == true"></app-lista-aktow-urzednik>

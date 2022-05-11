@@ -16,11 +16,16 @@ export class ListaUrzedowComponent implements OnInit {
   listaUrzad_Woj: Urzad_Woj[] = [];
   faTimes = faTimes;
   faPencilAlt = faPencilAlt;
+  isAdministrator: boolean = false;
 
   constructor(private urzedyService: UrzedyServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.urzedyService.getUrzedy().subscribe((urzedy) => this.listaUrzad_Woj = urzedy);
+
+    if(sessionStorage.getItem("rola") == "administrator"){
+      this.isAdministrator = true;
+    }
   }
 
   addUrzedy(urzedy: Urzedy){

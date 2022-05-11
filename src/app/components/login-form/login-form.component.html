@@ -1,0 +1,19 @@
+<h2>Zaloguj się</h2>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="login">Login</label>
+      <input type="text" class="form-control" id="login" [(ngModel)]="login" [ngModelOptions]="{standalone: true}" aria-describedby="nazwa" placeholder="Podaj login">
+    </div><br>
+    <div class="form-group">
+        <label for="haslo">Hasło</label>
+        <input type="password" class="form-control" id="haslo" [(ngModel)]="haslo" [ngModelOptions]="{standalone: true}" aria-describedby="haslo" placeholder="Podaj hasło">
+      </div><br>
+    <div class="form-group">
+      <label for="rola">Rola</label>
+    <select class="form-select" id="rola" [(ngModel)]="rola" [ngModelOptions]="{standalone: true}" aria-label="Domyślna wartość">
+        <option *ngFor="let rola1 of rolaList" [value]="rola1">{{ rola1 }}</option>
+      </select>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Zaloguj się</button>
+  </form>

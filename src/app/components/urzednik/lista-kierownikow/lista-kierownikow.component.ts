@@ -16,12 +16,22 @@ export class ListaKierownikowComponent implements OnInit {
   collectionSize: number = 1;
   faTimes = faTimes;
   faPencilAlt = faPencilAlt;
+  isKierownik: boolean = false;
+  isAdministrator: boolean = false;
 
   constructor(private kierownicyService: KierownicyServiceService, private router: Router) { 
     this.refreshLista();
   }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem("rola") == "kierownik")
+    {
+      this.isKierownik = true;
+    } 
+    else if(sessionStorage.getItem("rola") == "administrator")
+    {
+      this.isAdministrator = true;
+    }
   }
 
   refreshLista(){

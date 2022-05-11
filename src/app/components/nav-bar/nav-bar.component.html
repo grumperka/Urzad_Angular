@@ -38,6 +38,17 @@
           </ul>
         </div>
       </li>
+
+      <li class="nav-item active">
+        <a *ngIf="isLogged == false;" class="nav-link" href="/login">Zaloguj się</a>
+
+        <button *ngIf="isLogged == true;" class="btn btn-light" type="button" (click)="logout()" >Wyloguj się</button>
+        
+      </li>
+
+      <li *ngIf="isLogged == true;" class="nav-item active" >
+        <a  class="nav-link" href="/logged">Twój profil {{ rola }}a</a>
+      </li>
       </ul>
     </div>
   </nav>

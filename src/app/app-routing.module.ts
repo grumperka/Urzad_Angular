@@ -5,6 +5,8 @@ import { EditUrzadComponent } from './components/edit-urzad/edit-urzad.component
 import { ListaPowodowRozwoduComponent } from './components/lista-powodow-rozwodu/lista-powodow-rozwodu.component';
 import { ListaUrzedowComponent } from './components/lista-urzedow/lista-urzedow.component';
 import { ListaWojewodztwComponent } from './components/lista-wojewodztw/lista-wojewodztw.component';
+import { LoggedComponent } from './components/logged/logged.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 import { EditAktRozwoduComponent } from './components/urzednik/edit-akt-rozwodu/edit-akt-rozwodu.component';
 import { EditKierownikComponent } from './components/urzednik/edit-kierownik/edit-kierownik.component';
 import { EditObywatelComponent } from './components/urzednik/edit-obywatel/edit-obywatel.component';
@@ -63,6 +65,13 @@ const routes: Routes = [
   ,
   {
     path: 'updateAktRozwodu/:id', component: EditAktRozwoduComponent,
+  }
+  ,
+  {
+    path: 'login', component: LoginFormComponent,
+  },
+  {
+    path: 'logged', component: LoggedComponent,
   }
 ];
 

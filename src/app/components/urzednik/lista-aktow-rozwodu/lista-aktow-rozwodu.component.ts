@@ -16,13 +16,27 @@ export class ListaAktowRozwoduComponent implements OnInit {
   collectionSize: number = 1;
   faTimes = faTimes;
   faPencilAlt = faPencilAlt;
+  isKierownik: boolean = false;
+  isAdministrator: boolean = false;
+  isUrzednik: boolean = false;
 
   constructor(private aktyService: AktyServiceService, private router: Router) {
     this.refreshAkty();
    }
 
    ngOnInit(): void {
-     
+    if(sessionStorage.getItem("rola") == "kierownik")
+    {
+      this.isKierownik = true;
+    }  
+    else if(sessionStorage.getItem("rola") == "administrator")
+    {
+      this.isAdministrator = true;
+    }
+    else if(sessionStorage.getItem("rola") == "urzednik")
+    {
+      this.isUrzednik = true;
+    }
    };
 
   refreshAkty() {
