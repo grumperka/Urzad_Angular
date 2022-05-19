@@ -11,6 +11,7 @@ export class NavBarComponent implements OnInit {
   token: string | null = null;
   rola: string | null = null;
   userID: string | null = null;
+  connectionString: string | null = null;
   isLogged: boolean = false;
 
   constructor(private loginService: LoginServiceService) { }
@@ -18,15 +19,16 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
     console.log("ngOnInit");
 
-    if(sessionStorage.getItem('token') != null && sessionStorage.getItem('rola') != null && sessionStorage.getItem('userID') != null)
+    if(sessionStorage.getItem('token') != null && sessionStorage.getItem('rola') != null && sessionStorage.getItem('userID') != null && sessionStorage.getItem('connectionString') != null)
     {
       this.token = sessionStorage.getItem('token');
       this.rola = sessionStorage.getItem('rola');
       this.userID = sessionStorage.getItem('userID');
+      this.connectionString = sessionStorage.getItem('connectionString');
       this.isLogged = true;
     }
 
-    console.log("Data: "+this.token + " " + this.rola + " " + this.userID);
+    console.log("Data: "+this.connectionString + " " + this.rola + " " + this.userID);
     
    }
 

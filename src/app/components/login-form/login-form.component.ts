@@ -48,6 +48,7 @@ export class LoginFormComponent implements OnInit {
           sessionStorage.setItem('token',resp.token);
           sessionStorage.setItem('rola',resp.rola);
           sessionStorage.setItem('userID',resp.userID.toString());
+          sessionStorage.setItem('connectionString',resp.connectionString.toString());
           this.router.navigateByUrl('/logged');
         },
           err => {
@@ -60,6 +61,7 @@ export class LoginFormComponent implements OnInit {
           sessionStorage.setItem('token',resp.token);
           sessionStorage.setItem('rola',resp.rola);
           sessionStorage.setItem('userID',resp.userID.toString());
+          sessionStorage.setItem('connectionString',resp.connectionString.toString());
           this.router.navigateByUrl('/logged');
         },
           err => {
@@ -72,6 +74,7 @@ export class LoginFormComponent implements OnInit {
           sessionStorage.setItem('token',resp.token);
           sessionStorage.setItem('rola',resp.rola);
           sessionStorage.setItem('userID',resp.userID.toString());
+          sessionStorage.setItem('connectionString',resp.connectionString.toString());
           this.router.navigateByUrl('/logged');
         },
           err => {
@@ -84,6 +87,7 @@ export class LoginFormComponent implements OnInit {
           sessionStorage.setItem('token',resp.token);
           sessionStorage.setItem('rola',resp.rola);
           sessionStorage.setItem('userID',resp.userID.toString());
+          sessionStorage.setItem('connectionString',resp.connectionString.toString());
           this.router.navigateByUrl('/logged');
         },
           err => {

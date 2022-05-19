@@ -38,6 +38,7 @@ import { LoggedComponent } from './components/logged/logged.component';
 import { ListaAktowUrzednikComponent } from './components/urzednik/lista-aktow-urzednik/lista-aktow-urzednik.component';
 import { ListaAktowObywatelComponent } from './components/lista-aktow-obywatel/lista-aktow-obywatel.component';
 import { ListaAktowUrzadComponent } from './components/urzednik/lista-aktow-urzad/lista-aktow-urzad.component';
+import { CookieService } from 'ngx-cookie-service'
 
 @NgModule({
   declarations: [
@@ -81,7 +82,7 @@ import { ListaAktowUrzadComponent } from './components/urzednik/lista-aktow-urza
     FormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

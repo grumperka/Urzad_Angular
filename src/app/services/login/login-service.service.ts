@@ -6,6 +6,7 @@ import { Token } from 'src/app/components/objects/Token';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
+    'Cookie': 'connStr'
   }),
 };
 
@@ -32,7 +33,9 @@ export class LoginServiceService {
   loginKierownik(login: Login){
     console.log("SERVICE");
     console.log(login);
-    return this.http.post<Token>(this.apiUrl+"PostKierownikLogin", login, httpOptions);
+    let header = new HttpHeaders().set('Authorization','connStr');//mamy to!
+    console.log(header);
+    return this.http.post<Token>(this.apiUrl+"PostKierownikLogin", login, { headers: header, withCredentials: true });
   }
 
   loginAdministrator(login: Login){

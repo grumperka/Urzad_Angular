@@ -1,5 +1,6 @@
 export interface Token{
     token: string,
     rola: string,
-    userID: number
+    userID: number,
+    connectionString: number
 }
