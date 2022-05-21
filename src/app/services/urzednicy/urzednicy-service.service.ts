@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Urzednicy } from 'src/app/components/objects/Urzednicy';
+import { HeaderServiceService } from '../header-service.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,39 +15,31 @@ const httpOptions = {
 export class UrzednicyServiceService {
   private apiUrl = 'https://localhost:7171/api/Urzednicy';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private headerService: HeaderServiceService) { }
 
   getUrzednicy(){
-    const header = new HttpHeaders();
-    header.append('Access-Control-Allow-Headers', 'Content-Type');
-    header.append('Access-Control-Allow-Methods', 'GET');
-    header.append('Access-Control-Allow-Origin', '*');
+    var header = this.headerService.getHeader();
     return this.http.get<Urzednicy[]>(this.apiUrl, { headers: header });
   }
 
   getUrzednik(id: number){
-    const header = new HttpHeaders();
-    header.append('Access-Control-Allow-Headers', 'Content-Type');
-    header.append('Access-Control-Allow-Methods', 'GET');
-    header.append('Access-Control-Allow-Origin', '*');
+    var header = this.headerService.getHeader();
     return this.http.get<Urzednicy>(this.apiUrl + "/" + id, { headers: header });
   }
 
   addUrzednik(urzednik: Urzednicy){
-    console.log("SERVICE");
-    console.log(urzednik);
-    return this.http.post<Urzednicy>(this.apiUrl, urzednik, httpOptions);
+    var header = this.headerService.getHeader();
+    return this.http.post<Urzednicy>(this.apiUrl, urzednik, { headers: header });
   }
 
   editUrzednik(urzednik: Urzednicy){
-    console.log("SERVICE");
-    console.log(urzednik);
-    return this.http.put<Urzednicy>(this.apiUrl+"/"+urzednik.id, urzednik, httpOptions);
+    var header = this.headerService.getHeader();
+    return this.http.put<Urzednicy>(this.apiUrl+"/"+urzednik.id, urzednik, { headers: header });
   }
 
   deleteUrzednik(id: number){
-    console.log("SERVICE");
-    return this.http.delete<Urzednicy>(this.apiUrl+"/"+id, httpOptions);
+    var header = this.headerService.getHeader();
+    return this.http.delete<Urzednicy>(this.apiUrl+"/"+id, { headers: header });
   }
   
 }

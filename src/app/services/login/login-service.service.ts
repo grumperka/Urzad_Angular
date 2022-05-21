@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Login } from 'src/app/components/objects/Login';
 import { Token } from 'src/app/components/objects/Token';
+import { HeaderServiceService } from '../header-service.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,7 +17,7 @@ const httpOptions = {
 export class LoginServiceService {
   private apiUrl = 'https://localhost:7171/api/Login/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private headerService: HeaderServiceService) { }
 
   loginObywatel(login: Login){
     console.log("SERVICE");
@@ -33,9 +34,7 @@ export class LoginServiceService {
   loginKierownik(login: Login){
     console.log("SERVICE");
     console.log(login);
-    let header = new HttpHeaders().set('Authorization','connStr');//mamy to!
-    console.log(header);
-    return this.http.post<Token>(this.apiUrl+"PostKierownikLogin", login, { headers: header, withCredentials: true });
+    return this.http.post<Token>(this.apiUrl+"PostKierownikLogin", login, httpOptions);
   }
 
   loginAdministrator(login: Login){
@@ -45,10 +44,7 @@ export class LoginServiceService {
   }
 
   isUserLogged(){
-    const header = new HttpHeaders();
-    header.append('Access-Control-Allow-Headers', 'Content-Type');
-    header.append('Access-Control-Allow-Methods', 'GET');
-    header.append('Access-Control-Allow-Origin', '*');
+    var header = this.headerService.getHeader();
     return this.http.get<Token>(this.apiUrl+'isLogged', { headers: header });
   }
 }

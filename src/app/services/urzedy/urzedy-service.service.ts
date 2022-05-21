@@ -3,6 +3,7 @@ import { Urzad_Woj } from 'src/app/components/objects/Urzad_Woj';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Urzedy } from 'src/app/components/objects/Urzedy';
+import { HeaderServiceService } from '../header-service.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,40 +17,31 @@ const httpOptions = {
 export class UrzedyServiceService {
   private apiUrl = 'https://localhost:7171/api/Urzedy';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private headerService: HeaderServiceService) { }
 
   getUrzedy(): Observable<Urzad_Woj[]> {
-    const header = new HttpHeaders();
-    header.append('Access-Control-Allow-Headers', 'Content-Type');
-    header.append('Access-Control-Allow-Methods', 'GET');
-    header.append('Access-Control-Allow-Origin', '*');
+    var header = this.headerService.getHeader();
     return this.http.get<Urzad_Woj[]>(this.apiUrl, { headers: header });
   }
 
   getUrzad(id: number): Observable<Urzad_Woj> {
-    const header = new HttpHeaders();
-    header.append('Access-Control-Allow-Headers', 'Content-Type');
-    header.append('Access-Control-Allow-Methods', 'GET');
-    header.append('Access-Control-Allow-Origin', '*');
+    var header = this.headerService.getHeader();
     return this.http.get<Urzad_Woj>(this.apiUrl + '/' + id, { headers: header });
   }
 
 
   addUrzedy(urzedy: Urzedy): Observable<Urzedy>{
-    console.log("SERVICE");
-    console.log(urzedy);
-    return this.http.post<Urzedy>(this.apiUrl, urzedy, httpOptions);
+    var header = this.headerService.getHeader();
+    return this.http.post<Urzedy>(this.apiUrl, urzedy, { headers: header });
   }
 
   deleteUrzedy(urzedy: Urzedy){
-    console.log("SERVICE");
-    console.log(urzedy);
-    return this.http.delete<number>(this.apiUrl+'/'+urzedy.id,httpOptions);
+    var header = this.headerService.getHeader();
+    return this.http.delete<number>(this.apiUrl+'/'+urzedy.id,{ headers: header });
   }
 
   editUrzedy(id: number,urzedy: Urzedy): Observable<Urzedy>{
-    console.log("SERVICE");
-    console.log(urzedy);
-    return this.http.put<Urzedy>(this.apiUrl + '/' + id, urzedy, httpOptions);
+    var header = this.headerService.getHeader();
+    return this.http.put<Urzedy>(this.apiUrl + '/' + id, urzedy, { headers: header });
   }
 }
