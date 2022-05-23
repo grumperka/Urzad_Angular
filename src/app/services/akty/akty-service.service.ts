@@ -75,7 +75,7 @@ export class AktyServiceService {
 
   deleteAktSlubu(id: number){
     var header = this.headerService.getHeader();
-    return this.http.delete<Akty_slubow>(this.apiUrlSlubow + "/" + id, httpOptions);
+    return this.http.delete<Akty_slubow>(this.apiUrlSlubow + "/" + id, { headers: header });
   }
 
   /////////////////////////////
@@ -87,7 +87,7 @@ export class AktyServiceService {
 
   deleteAktUrodzenia(id: number){
     var header = this.headerService.getHeader();
-    return this.http.delete<Akty_urodzenia>(this.apiUrlUrodzenia + "/" + id, httpOptions);
+    return this.http.delete<Akty_urodzenia>(this.apiUrlUrodzenia + "/" + id, { headers: header });
   }
 
   /////////////////////////////
@@ -99,7 +99,7 @@ export class AktyServiceService {
 
   deleteAktZgonu(id: number){
     var header = this.headerService.getHeader();
-    return this.http.delete<Akty_urodzenia>(this.apiUrlZgonow + "/" + id, httpOptions);
+    return this.http.delete<Akty_urodzenia>(this.apiUrlZgonow + "/" + id, { headers: header });
   }
 
   ///////////////////////////////////

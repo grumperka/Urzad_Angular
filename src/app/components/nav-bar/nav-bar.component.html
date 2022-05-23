@@ -13,7 +13,7 @@
           <a class="nav-link" href="/powody_rozwodow">Powody rozwodow</a>
         </li>
         <li class="nav-item">
-        <div ngbDropdown class="dropdown">
+        <div *ngIf="rola != 'obywatel';" ngbDropdown class="dropdown">
           <button ngbDropdownToggle class="btn btn-light" type="button" id="dropdownMenuButton1" aria-expanded="false">
         Akty
         </button>
@@ -32,7 +32,7 @@
         Listy
         </button>
           <ul ngbDropdownMenu aria-labelledby="dropdownMenuButton2">
-            <li><a ngbDropdownItem href="/lista_obywateli">Obywateli</a></li>
+            <li *ngIf="isLogged == true && rola != 'obywatel';"><a ngbDropdownItem href="/lista_obywateli">Obywateli</a></li>
             <li><a ngbDropdownItem href="/lista_urzednikow">Urzedników</a></li>
             <li><a ngbDropdownItem href="/lista_kierownikow">Kierowników</a></li>
           </ul>

@@ -44,6 +44,9 @@ export class ListaAktowUrodzeniaComponent implements OnInit {
     
       this.listaAktow = this.listaAktow
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+    }, err =>  {
+      console.log(err);
+      alert("Wystąpił błąd. Żądane dane są dostępne dla administratora,kierowników oraz urzędników.");
     });
   }
 
